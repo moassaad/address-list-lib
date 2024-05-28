@@ -21,9 +21,7 @@ Installation is a very simple process, all you have to do is copy the folders to
 
 The use is twotrend 
 
-____
 ### The first trend is to use the API application
-___
 
 ```
 /address/country
@@ -55,15 +53,13 @@ It is used to retrieve all cities located within a governorate
 ```
 It is used to retrieve a city specified by the code
 
-___
 ### The second trend is at the application programming level
-___
 
 _**AddressCode**_ : It is the class from which the query about addresses begins, and it is of the static class type, so all the functions within it are of the static type.
 
 ``` php
-$country = AddressCode::country();
-$country = $country->list();
+$countrys = AddressCode::country();
+$countrys = $country->list();
 ```
 It is used to retrieve all available countries
 
@@ -78,9 +74,9 @@ $country = $country->getData();
 It is used to fetch the city of one country with the code
 
 ``` php
-$governorate = AddressCode::country(1)->governorate();
+$governorates = AddressCode::country(1)->governorate();
 // Or 
-$governorate = AddressCode::governorate(1);
+$governorates = AddressCode::governorate(1);
 ```
 It is used to retrieve all governorates within a country
 
@@ -99,9 +95,9 @@ $governorate = $governorate->getData();
 It is used to retrieve one governorate with the code
 
 ``` php
-$city = AddressCode::country(1)->governorate(1)->city();
+$cities = AddressCode::country(1)->governorate(1)->city();
 // Or 
-$city = AddressCode::city(1,1);
+$cities = AddressCode::city(1,1);
 ```
 It is used to retrieve all cities located within a governorate
 
