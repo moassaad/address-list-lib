@@ -2,9 +2,9 @@ name: PHP CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, new-suit ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, new-suit ]
 
 jobs:
   test-code:
