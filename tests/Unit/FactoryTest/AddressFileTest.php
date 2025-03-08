@@ -12,6 +12,5 @@ class AddressFileTest extends TestCase
     {
         $content = new AddressFile();
         $this->assertTrue($content->isArray());
-        $this->assertTrue(false);
     }
 }
