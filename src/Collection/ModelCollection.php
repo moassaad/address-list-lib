@@ -29,7 +29,7 @@ abstract class ModelCollection
         $this->list = $list;
         $this->build();
     }
-    
+    abstract protected function build();
     public function setModel(Model $model)
     {
         $this->model = $model;
