@@ -2,6 +2,7 @@
 
 namespace Moassaad\Addressia\Models;
 
+use Moassaad\Addressia\Collection\CityCollection;
 use Moassaad\Addressia\Enums\JsonStructure\GovernorateStruct;
 
 class Governorate extends Model
@@ -34,6 +35,8 @@ class Governorate extends Model
     {
         return $this->data;
     }
-    
-    
+    public function cities()
+    {
+        return new CityCollection($this->getData());
+    }
 }
