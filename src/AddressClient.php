@@ -17,6 +17,7 @@ class AddressClient
     public City $city;
     public string $address;
     public string $country_id, $governorate_id, $city_id;
+    public string $line_one, $line_two, $allAddress;
     protected AddressFactory $addressFactory;
     public function __construct(string $address, string $space = ' ')
     {
