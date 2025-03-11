@@ -64,6 +64,28 @@ class AddressClientTest extends TestCase
         $this->assertEquals($this->dataget, $address);
 
     }
+    public function test_get_address_list()
+    {
+        $address = new AddressClient();
+        
+        $countries = $address->getAddressList()->getCountries();
+        $this->assertContainsOnlyInstancesOf(Country::class, $countries);
+        
+        $country = $countries[1];
+        $this->assertInstanceOf(Country::class, $country);
+        
+        $governorates = $address->getAddressList()->getGovernorates($country->id());
+        $this->assertContainsOnlyInstancesOf(Governorate::class, $governorates);
+        
+        $governorate = $governorates[1];
+        $this->assertInstanceOf(Governorate::class, $governorate);
+        
+        $cities = $address->getAddressList()->getCities($country->id(), $governorate->id());
+        $this->assertContainsOnlyInstancesOf(City::class, $cities);
+        
+        $city = $cities[0];
+        $this->assertInstanceOf(City::class, $city);
+    }
     private function assertEqualsCountryTest(AddressClient $address)
     {
         $country = $address->getCountry();
