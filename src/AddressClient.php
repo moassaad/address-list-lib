@@ -2,6 +2,7 @@
 
 namespace Moassaad\Addressia;
 
+use Moassaad\Addressia\Factory\AddressListFactory;
 use function json_decode;
 
 use Moassaad\Addressia\Models\City;
@@ -12,27 +13,51 @@ use Moassaad\Addressia\Enums\JsonStructure\ModelFlag;
 
 class AddressClient
 {
-    public Country $country;
-    public Governorate $governorate;
-    public City $city;
-    public string $address;
-    public string $country_id, $governorate_id, $city_id;
-    public string $line_one, $line_two, $allAddress;
+    protected Country $country;
+    protected Governorate $governorate;
+    protected City $city;
+    protected string $address;
+    protected string $country_id, $governorate_id, $city_id;
+    protected string $line_one, $line_two, $allAddress;
     protected AddressFactory $addressFactory;
-    public function __construct(string $address, string $space = ' ')
+    protected AddressListFactory $addressListFactory;
+    public function __construct(string $address = "", string $space = ' ')
     {
+        $this->setDefault();
+        $this->buildAddressList();
         $this->build($address, $space);
     }
-    private function build($address, $space = ' ')
+    private function setDefault()
+    {
+        // $this->country = new Country();
+        // $this->governorate = new Governorate();
+        // $this->city = new City();
+        
+        $this->country_id = "";
+        $this->governorate_id = "";
+        $this->city_id = "";
+        $this->address = "";
+
+        $this->line_one = "";
+        $this->line_two = "";
+        $this->allAddress = "";
+    }
+    private function buildAddressList()
+    {
+        $this->addressListFactory = new AddressListFactory();
+    }
+    private function build(string $address, $space = ' ')
     {
         $addressArray =  $this->jsonToArray($address);
-        
-        $this->buildFactory($addressArray);
-        $this->buildAddress($addressArray, $space);
+        if(!empty($addressArray))
+        {
+            $this->buildFactory($addressArray);
+            $this->buildAddress($addressArray, $space);
+        }
     }
-    private function jsonToArray(string $address)
+    private function jsonToArray(string $address): array
     {
-        return json_decode($address, JSON_OBJECT_AS_ARRAY);
+        return json_decode($address, JSON_OBJECT_AS_ARRAY) ?? [];
     }
     private function buildFactory(array $address)
     {
@@ -90,5 +115,9 @@ class AddressClient
     {
         return  $this->getLineOne($space).$space.
                 $this->getLineTwo();
+    }
+    public function getAddressList()
+    {
+        return $this->addressListFactory;
     }
 }
