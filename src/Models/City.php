@@ -7,7 +7,7 @@ use Moassaad\Addressia\Enums\JsonStructure\CityStruct;
 class City extends Model
 {
 
-    public function __construct(array $city = null)
+    public function __construct(array $city = [])
     {
         $this->defination($city);
     }

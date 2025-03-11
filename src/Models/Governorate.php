@@ -9,7 +9,7 @@ class Governorate extends Model
 {
     private $data;
 
-    public function __construct(array $governorate = null)
+    public function __construct(array $governorate = [])
     {
         $this->data = [];
         $this->defination($governorate);
@@ -22,11 +22,6 @@ class Governorate extends Model
         $this->setData($governorate[GovernorateStruct::DATA->value]);
         return $this;
     }
-
-    // public function setObj(object $object) : self
-    // {
-    //     return new self($object);
-    // }
     protected function setData(array $data)
     {
         $this->data = $data;

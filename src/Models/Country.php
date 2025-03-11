@@ -9,7 +9,7 @@ class Country extends Model
 {
     protected $data;
 
-    public function __construct(array $country = null)
+    public function __construct(array $country = [])
     {
         $this->data = [];
         $this->defination($country);
@@ -22,11 +22,6 @@ class Country extends Model
         $this->setData($country[CountryStruct::DATA->value]);
         return $this;
     }
-
-    // public function setObj(object $object) : self
-    // {
-    //     return new self($object);
-    // }
     protected function setData(array $data)
     {
         $this->data = $data;
@@ -39,5 +34,4 @@ class Country extends Model
     {
         return new GovernorateCollection($this->getData());
     }
-    
 }
