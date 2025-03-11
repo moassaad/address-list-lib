@@ -26,11 +26,19 @@ class CityCollection extends ModelCollection
         $this->setModel(new City($city));
         return $this;
     }
-    public function getCity()
+    /**
+     * City Model.
+     * @return \Moassaad\Addressia\Models\City|null
+     */
+    public function getCity():?City
     {
         return $this->getModel();
     }
-    public function getCities()
+    /**
+     * Array of city.
+     * @return array<\Moassaad\Addressia\Models\City>
+     */
+    public function getCities(): array
     {
         return $this->getCollection();
     }

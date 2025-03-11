@@ -30,21 +30,21 @@ abstract class ModelCollection
         $this->build();
     }
     abstract protected function build();
-    public function setModel(Model $model)
+    protected function setModel(Model $model)
     {
         $this->model = $model;
         return $this;
     }
-    public function getModel()
+    protected function getModel()
     {
         return $this->model;
     }
-    public function addToCollection(Model $model)
+    protected function addToCollection(Model $model)
     {
         $this->collection[] = $model;
         return $this;
     }
-    public function getCollection()
+    protected function getCollection()
     {
         return $this->collection;
     }

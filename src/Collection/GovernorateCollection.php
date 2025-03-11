@@ -27,10 +27,18 @@ class GovernorateCollection extends ModelCollection
         $this->setModel(new Governorate($governorate));
         return $this;
     }
-    public function getGovernorate()
+    /**
+     * Governorate Model.
+     * @return \Moassaad\Addressia\Models\Governorate|null
+     */
+    public function getGovernorate():?Governorate
     {
         return $this->getModel();
     }
+    /**
+     * Summary of getGovernorates
+     * @return array<\Moassaad\Addressia\Models\Governorate>
+     */
     public function getGovernorates()
     {
         return $this->getCollection();

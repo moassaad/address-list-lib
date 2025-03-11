@@ -18,22 +18,30 @@ class CountryCollection extends ModelCollection
             $this->addToCollection(new Country($country));
         }
     }
+    public function list(): array
+    {
+        return $this->list[FileStruct::DATA->value];
+    }
     protected function setNewCountry(array $country)
     {
         $this->setModel(new Country($country));
         return $this;
     }
-    public function getCountry()
+    /**
+     * Country Model.
+     * @return \Moassaad\Addressia\Models\Country|null
+     */
+    public function getCountry():?Country
     {
         return $this->getModel();
     }
+    /**
+     * Array of country.
+     * @return array<\Moassaad\Addressia\Models\Country>
+     */
     public function getCountries()
     {
         return $this->getCollection();
-    }
-    public function list(): array
-    {
-        return $this->list[FileStruct::DATA->value];
     }
     public function findCode(int $code)
     {
